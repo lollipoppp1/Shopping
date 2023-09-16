@@ -43,7 +43,7 @@ const router = new VueRouter({
 
 const authUrls = ['/pay', '/myorder']
 // 全局前置导航守卫
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, next) => {
   if (!authUrls.includes(to.path)) {
     next()
     return

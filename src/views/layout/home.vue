@@ -61,6 +61,7 @@ export default {
     }
   },
   async created () {
+    // 将获取的信息赋值给对应的变量
     const { data: { pageData } } = await getHomeData()
     this.bannerList = pageData.items[1].data
     this.navList = pageData.items[3].data

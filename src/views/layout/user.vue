@@ -125,6 +125,7 @@ export default {
       this.detail = userInfo
       console.log(this.detail)
     },
+    // 退出登录
     logout () {
       this.$dialog.confirm({
         title: '温馨提示',

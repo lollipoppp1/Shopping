@@ -14,6 +14,7 @@ export default {
     }
   },
   actions: {
+    // 退出登录
     logout (context) {
       // 个人信息重置
       context.commit('setUserInfo', {})

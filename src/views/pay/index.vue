@@ -95,28 +95,28 @@
 </template>
 
 <script>
-// import { getAddressList } from '@/api/address'
+import { getAddressList } from '@/api/address'
 import { checkOrder, submitOrder } from '@/api/order'
 export default {
   name: 'PayIndex',
   data () {
     return {
       addressList: [
-        {
-          address_id: 10012,
-          name: '张小',
-          phone: '18999292929',
-          province_id: 782,
-          city_id: 783,
-          region_id: 785,
-          detail: '北京路1号楼8888室',
-          user_id: 10003,
-          region: {
-            province: '上海',
-            city: '上海市',
-            region: '徐汇区'
-          }
-        }
+        // {
+        //   address_id: 10012,
+        //   name: '张小',
+        //   phone: '18999292929',
+        //   province_id: 782,
+        //   city_id: 783,
+        //   region_id: 785,
+        //   detail: '北京路1号楼8888室',
+        //   user_id: 10003,
+        //   region: {
+        //     province: '上海',
+        //     city: '上海市',
+        //     region: '徐汇区'
+        //   }
+        // }
       ],
       order: {},
       personal: {},
@@ -124,6 +124,7 @@ export default {
     }
   },
   computed: {
+    // 默认获取第一条地址
     selectAddress () {
       return this.addressList[0]
     },
@@ -148,7 +149,7 @@ export default {
     }
   },
   async created () {
-    // this.getAddressList()
+    this.getAddressList()
     this.getOrderList()
   },
   methods: {
@@ -170,9 +171,10 @@ export default {
       this.$toast.success('支付成功')
       this.$router.replace('/myorder')
     },
+    // 获取地址列表
     async getAddressList () {
-      // const { data: { list } } = await getAddressList()
-      // this.addressList = list
+      const { data: { list } } = await getAddressList()
+      this.addressList = list
     },
     async getOrderList () {
       // 购物车结算

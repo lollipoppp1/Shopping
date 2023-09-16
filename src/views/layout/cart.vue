@@ -82,9 +82,11 @@ export default {
     }
   },
   methods: {
+    // 小选按钮改变
     toggleCheck (goodsId) {
       this.$store.commit('cart/toggleCheck', goodsId)
     },
+    // 全选按钮改变
     toggleAllCheck () {
       this.$store.commit('cart/toggleAllCheck', !this.isAllChecked)
     },
@@ -100,6 +102,8 @@ export default {
       await this.$store.dispatch('cart/delSelect')
       this.isEdit = false
     },
+
+    // 结算
     goPay () {
       // 判断是否选中商品
       if (this.selCount > 0) {

@@ -151,31 +151,40 @@ export default {
     onChange (index) {
       this.current = index
     },
+    // 获取商品详情
     async getDetail () {
       const { data: { detail } } = await getProDetail(this.goodsId)
       this.detail = detail
       this.images = detail.goods_images
     },
+    // 获取评价列表
     async getComments () {
       const { data: { list, total } } = await getProComments(this.goodsId, 3)
       this.commentList = list
       this.total = total
     },
+    // 加入购物车
     addFn () {
       this.mode = 'cart'
       this.showPannel = true
     },
+    // 立即购买
     buyFn () {
       this.mode = 'buy'
       this.showPannel = true
     },
+    // 注册点击事件
     async addCart () {
+      // 判断用户是否登录
       if (this.loginConfirm()) return
+      // 加入购物车
       const { data } = await addCart(this.goodsId, this.addCount, this.detail.skuList[0].goods_sku_id)
       this.cartTotal = data.cartTotal
       this.$toast('加入购物车成功')
       this.showPannel = false
     },
+
+    // 立即购买
     goBuyNow () {
       // 未登录时
       if (this.loginConfirm()) return

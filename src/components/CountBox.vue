@@ -15,16 +15,19 @@ export default {
     }
   },
   methods: {
+    // 减
     handleSub () {
       if (this.value <= 1) return
       this.$emit('input', this.value - 1)
     },
+    // 加
     handleAdd () {
       this.$emit('input', this.value + 1)
     },
+    // 更改数字
     handleCha (e) {
-      const num = +e.target.value
-      // 输入不合法的文本
+      const num = +e.target.value // 转数字处理
+      // 输入不合法的文本/负值，恢复原值
       if (isNaN(num) || num < 1) {
         e.target.value = this.value
         return

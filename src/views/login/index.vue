@@ -40,9 +40,11 @@ export default {
   name: 'LoginIndex',
   data () {
     return {
+      // 图形验证码
       picCode: '', // 用户输入的图像验证码
       picKey: '', // 请求传递的图形验证码唯一标识
       picUrl: '', // 请求渲染的图片地址
+      // 短信验证码
       totalSecond: 60, // 总秒数
       second: 60, // 当前秒数
       timer: null, // 定时器
@@ -99,6 +101,7 @@ export default {
       if (!this.validFn()) {
         return
       }
+      // 判断短信验证码是否合法
       if (!/^\d{6}$/.test(this.msgCode)) {
         this.$toast('请输入正确的手机验证码')
         return
@@ -114,6 +117,7 @@ export default {
     }
   },
   destroyed () {
+    // 页面销毁时 清除定时器
     clearInterval(this.timer)
   }
 

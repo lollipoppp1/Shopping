@@ -17,6 +17,7 @@ instance.interceptors.request.use(function (config) {
     forbidClick: true,
     duration: 0
   })
+  // 在请求拦截器中统一携带token
   const token = store.getters.token
   if (token) {
     config.headers['Access-Token'] = token

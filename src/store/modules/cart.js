@@ -12,21 +12,25 @@ export default {
     setCartList (state, newList) {
       state.cartList = newList
     },
+    // 小选
     toggleCheck (state, goodsId) {
       const goods = state.cartList.find(item => item.goods_id === goodsId)
       goods.isChecked = !goods.isChecked
     },
+    // 全选
     toggleAllCheck (state, flag) {
       state.cartList.forEach(item => {
         item.isChecked = flag
       })
     },
+    // 数字框改变
     changeCount (state, { goodsId, goodsNum }) {
       const goods = state.cartList.find(item => item.goods_id === goodsId)
       goods.goods_num = goodsNum
     }
   },
   actions: {
+    // 获取购物车列表
     async getCartActions (context) {
       const { data } = await getCartList()
       // 手动给每项添加一个isChecked状态
@@ -42,6 +46,7 @@ export default {
       // 同步到后台
       await changeCount(goodsId, goodsNum, goodsSkuId)
     },
+    // 删除购物车数据
     async delSelect (context) {
       const selCartList = context.getters.selCartList
       const cartIds = selCartList.map(item => item.id)

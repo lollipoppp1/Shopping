@@ -29,6 +29,7 @@ export default {
     }
   },
   methods: {
+    // 获取订单列表
     async getOrderList () {
       const { data: { list } } = await getMyOrderList(this.active, this.page)
       list.data.forEach((item) => {

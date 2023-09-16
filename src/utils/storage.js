@@ -1,5 +1,6 @@
 const INFO_KEY = 'shopping_info'
 const HISTORY_KEY = 'history_list'
+
 // 获取个人信息
 export const getInfo = () => {
   const defaultObj = { token: '', userId: '' }
